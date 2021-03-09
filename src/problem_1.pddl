@@ -10,7 +10,7 @@
     (:init
             (at t startLocation)
             
-            (not (vaccinated person1))
+            (not(vaccinated person1))
             (not (vaccinated person2))
             (not (vaccinated person3))
 
@@ -49,12 +49,13 @@
             (atPerson person2 location3)
             (atPerson person3 location5)
 
+
     )
 
     (:goal (and
-        (vaccinated person1)
-        (vaccinated person2)
         (vaccinated person3)
+        (vaccinated person2)
+        (vaccinated person1)
         (at t startLocation)
         )
     )
