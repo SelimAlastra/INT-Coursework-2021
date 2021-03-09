@@ -1,22 +1,38 @@
 (define
-    (domain example)
-    (:requirements :strips)
+    (domain vaccine-delivery)
+    (:requirements :strips :typing :negative-preconditions) ; negative-preconditions?
 
-    ;(:domain-variables ) ;deprecated
+    (:types
+        person - object
+        truck - object 
+        location - object
+    )
 
     (:predicates
-        (some-fact ?a)
-        (some-goal ?a)
+        (at ?t - truck ?loc - location)
+        (atPerson ?p - person ?loc - location)
+        (connected ?startlocation - location ?endlocation - location)
+        (vaccinated ?p - person)
     )
 
-    (:action DO-STUFF
-        :parameters (?a)
+    (:action move
+        :parameters (?t - truck ?startlocation - location ?endlocation - location)
         :precondition (and
-            (some-fact ?a)
+            (at ?t ?startlocation) (connected ?startlocation ?endlocation)
         )
         :effect (and
-            (some-goal ?a)
+            (at ?t ?endlocation) (not (at ?t ?startlocation))
         )
-        ; :expansion ;deprecated
     )
+
+    (:action vaccinate 
+        :parameters (?t - truck ?trucklocation - location ?p - person)
+        :precondition (and
+            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (not (vaccinated ?p))
+        )
+        :effect (and 
+            (vaccinated ?p)
+        )
+    )
+    
 )
