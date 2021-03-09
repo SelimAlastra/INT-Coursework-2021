@@ -13,6 +13,7 @@
         (atPerson ?p - person ?loc - location)
         (connected ?startlocation - location ?endlocation - location)
         (vaccinated ?p - person)
+        (over60 ?p - person)
     )
 
     (:action move
@@ -28,7 +29,7 @@
     (:action vaccinate 
         :parameters (?t - truck ?trucklocation - location ?p - person)
         :precondition (and
-            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (not (vaccinated ?p))
+            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (not (vaccinated ?p)) (over60 ?p)
         )
         :effect (and 
             (vaccinated ?p)
