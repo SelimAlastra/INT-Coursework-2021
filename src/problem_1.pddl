@@ -11,7 +11,7 @@
             (at t startLocation)
             
             (not (vaccinated person1))
-            (vaccinated person2)
+            (not (vaccinated person2))
             (not (vaccinated person3))
 
             (connected startLocation location1)
