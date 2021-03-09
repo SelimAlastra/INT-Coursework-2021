@@ -4,28 +4,47 @@
 
     (:objects 
         t - truck 
-        startLocation location1 location2 location3 location4 location5 location6 location7 location8 location9 location10 - location
+        startLocation location0 location1 location2 location3 location4 location5 location6 location7 location8 location9 location10 - location
         person1 person2 person3 person4 person5 person6 person7 person8 - person
     )
     (:init
             (at t startLocation)
             
             (not (vaccinated person1))
-            (vaccinated person2)
+            (not (vaccinated person2))
             (not (vaccinated person3))
+            (not (vaccinated person4))
+            (not (vaccinated person5))
+            (not (vaccinated person6))
+            (not (vaccinated person7))
+            (not (vaccinated person8))
 
-            (connected startLocation location1)
-            (connected startLocation location3)
-            (connected startLocation location5)
-            (connected location1 location2)
-            (connected location1 location4)
-            (connected location2 location3)
-            (connected location2 location4)
-            (connected location3 location4)
-            (connected location3 location5)
+            (connected startLocation location0)
+            (connected location0 startLocation)
+            (connected location0 location5)
+            (connected location5 location0)
+            (connected location5 location4)
             (connected location4 location5)
-
-        
+            (connected location4 location1)
+            (connected location1 location4)
+            (connected location1 location6)
+            (connected location6 location1)
+            (connected location1 location2)
+            (connected location2 location1)
+            (connected location2 location7)
+            (connected location7 location2)
+            (connected location2 location3)
+            (connected location3 location2)
+            (connected location7 location9)
+            (connected location9 location7)
+            (connected location4 location3)
+            (connected location3 location4)
+            (connected location3 location10)
+            (connected location10 location3)
+            (connected location10 location8)
+            (connected location8 location10)
+            (connected location8 location9)
+            (connected location9 location8)        
 
             (atPerson person1 location1)
             (atPerson person2 location3)
@@ -35,13 +54,17 @@
             (atPerson person6 location8)
             (atPerson person7 location9)
             (atPerson person8 location10)
-
     )
 
     (:goal (and
         (vaccinated person1)
         (vaccinated person2)
         (vaccinated person3)
+        (vaccinated person4)
+        (vaccinated person5)
+        (vaccinated person6)
+        (vaccinated person7)
+        (vaccinated person8)
         (at t startLocation)
         )
     )

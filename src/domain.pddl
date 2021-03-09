@@ -13,6 +13,7 @@
         (atPerson ?p - person ?loc - location)
         (connected ?startlocation - location ?endlocation - location)
         (vaccinated ?p - person)
+        (over60 ?p - person)
     )
 
     (:action move
