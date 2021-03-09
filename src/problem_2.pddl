@@ -54,16 +54,22 @@
             (atPerson person6 location8)
             (atPerson person7 location9)
             (atPerson person8 location10)
+
+            (not (over60 person1))
+            (over60 person2)
+            (not (over60 person3))
+            (over60 person4)
+            (not (over60 person5))
+            (over60 person6)
+            (not (over60 person7))
+            (over60 person8)
+
     )
 
     (:goal (and
-        (vaccinated person1)
         (vaccinated person2)
-        (vaccinated person3)
         (vaccinated person4)
-        (vaccinated person5)
         (vaccinated person6)
-        (vaccinated person7)
         (vaccinated person8)
         (at t startLocation)
         )
