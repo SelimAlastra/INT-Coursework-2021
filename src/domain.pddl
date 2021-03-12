@@ -1,9 +1,9 @@
 (define
     (domain vaccine-delivery)
-    (:requirements :strips :typing :negative-preconditions) ; negative-preconditions?
+    (:requirements :strips :typing) 
 
     (:types
-        person - object
+        person - object 
         truck - object 
         location - object
     )
@@ -12,7 +12,7 @@
         (at ?t - truck ?loc - location)
         (atPerson ?p - person ?loc - location)
         (connected ?startlocation - location ?endlocation - location)
-        (vaccinated ?p - person)
+        (notVaccinated ?p - person)
         (over60 ?p - person)
     )
 
@@ -29,10 +29,10 @@
     (:action vaccinate 
         :parameters (?t - truck ?trucklocation - location ?p - person)
         :precondition (and
-            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (not (vaccinated ?p)) (over60 ?p)
+            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (over60 ?p)
         )
         :effect (and 
-            (vaccinated ?p)
+            (not (notVaccinated ?p))
         )
     )
     
