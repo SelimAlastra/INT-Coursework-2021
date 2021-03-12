@@ -18,6 +18,15 @@
             (not (vaccinated person7))
             (not (vaccinated person8))
 
+            (notVaccinated person1)
+            (notVaccinated person2)
+            (notVaccinated person3)
+             (notVaccinated person4)
+            (notVaccinated person5)
+            (notVaccinated person6)
+             (notVaccinated person7)
+            (notVaccinated person8)
+
             (connected startLocation location0)
             (connected location0 startLocation)
             (connected location0 location5)
