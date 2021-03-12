@@ -56,8 +56,7 @@
     )
 
     (:goal (and
-        (not (notVaccinated person3))
-        (at t startLocation)
+        (at t location5)
         )
     )
 )
