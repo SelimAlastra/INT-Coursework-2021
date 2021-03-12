@@ -1,6 +1,6 @@
 (define
     (domain vaccine-delivery)
-    (:requirements :strips :typing :negative-preconditions) 
+    (:requirements :strips :typing) 
 
     (:types
         person - object 
