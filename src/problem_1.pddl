@@ -13,6 +13,9 @@
             (notVaccinated person1)
             (notVaccinated person2)
             (notVaccinated person3)
+            (not(vaccinated person1))
+            (not(vaccinated person2))
+            (not(vaccinated person3))
 
             (connected startLocation location1)
             (connected startLocation location3)
@@ -57,6 +60,7 @@
 
     (:goal (and
         (at t location5)
+        (vaccinated person3)
         )
     )
 )

@@ -13,6 +13,7 @@
         (atPerson ?p - person ?loc - location)
         (connected ?startlocation - location ?endlocation - location)
         (notVaccinated ?p - person)
+        (vaccinated ?p - person)
         (over60 ?p - person)
     )
 
@@ -33,6 +34,7 @@
         )
         :effect (and 
             (not (notVaccinated ?p))
+            (vaccinated ?p)
         )
     )
     
