@@ -3,12 +3,13 @@
     (:domain vaccine-delivery)
     ;(:situation <situation_name>) ;deprecated
     (:objects 
-        t - truck 
+        t1 t2 - truck 
         startLocation location1 location2 location3 location4 location5 - location
         person1 person2 person3 - person
     )
     (:init
-            (at t startLocation)
+            (at t1 startLocation)
+            (at t2 startLocation)
             
             (notVaccinated person1)
             (notVaccinated person2)
@@ -55,12 +56,20 @@
             (not (over60 person1))
             (not (over60 person2))
             (over60 person3)
+            (under60 person1)
+            (under60 person2)
+            (not (under60 person3))
 
+            (vaccineOld t1)
+            (vaccineYoung t2)
     )
 
     (:goal (and
-        (at t location5)
+        (at t1 startLocation)
+        (at t2 startLocation)
         (vaccinated person3)
+        (vaccinated person1)
+        (vaccinated person2)
         )
     )
 )

@@ -15,6 +15,9 @@
         (notVaccinated ?p - person)
         (vaccinated ?p - person)
         (over60 ?p - person)
+        (vaccineOld ?t - truck)
+        (vaccineYoung ?t - truck)
+        (under60 ?p - person)
     )
 
     (:action move
@@ -27,15 +30,25 @@
         )
     )
 
-    (:action vaccinate 
+    (:action vaccinateOld 
         :parameters (?t - truck ?trucklocation - location ?p - person)
         :precondition (and
-            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (over60 ?p)
+            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (over60 ?p) (vaccineOld ?t)
         )
         :effect (and 
             (not (notVaccinated ?p))
             (vaccinated ?p)
         )
     )
-    
+
+     (:action vaccinateYoung
+        :parameters (?t - truck ?trucklocation - location ?p - person)
+        :precondition (and
+            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (under60 ?p) (vaccineYoung ?t)
+        )
+        :effect (and 
+            (not (notVaccinated ?p))
+            (vaccinated ?p)
+        )
+    )
 )
