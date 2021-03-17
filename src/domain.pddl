@@ -1,6 +1,6 @@
 (define
     (domain vaccine-delivery)
-    (:requirements :strips :typing) 
+    (:requirements :strips :typing :fluents) 
 
     (:types
         person - object 
@@ -18,6 +18,12 @@
         (vaccineOld ?t - truck)
         (vaccineYoung ?t - truck)
         (under60 ?p - person)
+        (isHospital ?loc - location)
+    )
+
+    (:functions
+        (numberOfVaccines ?t - truck)
+        (vaccinesRequired ?p - person)
     )
 
     (:action move
@@ -33,22 +39,35 @@
     (:action vaccinateOld 
         :parameters (?t - truck ?trucklocation - location ?p - person)
         :precondition (and
-            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (over60 ?p) (vaccineOld ?t)
+            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (over60 ?p) (vaccineOld ?t) (>= (numberOfVaccines ?t) (vaccinesRequired ?p))
         )
         :effect (and 
             (not (notVaccinated ?p))
             (vaccinated ?p)
+            (decrease (numberOfVaccines ?t) (vaccinesRequired ?p))
         )
     )
 
-     (:action vaccinateYoung
+    (:action vaccinateYoung
         :parameters (?t - truck ?trucklocation - location ?p - person)
         :precondition (and
-            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (under60 ?p) (vaccineYoung ?t)
+            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (under60 ?p) (vaccineYoung ?t) (>= (numberOfVaccines ?t) (vaccinesRequired ?p))
         )
         :effect (and 
             (not (notVaccinated ?p))
             (vaccinated ?p)
+            (decrease (numberOfVaccines ?t) (vaccinesRequired ?p))
         )
     )
+
+    (:action pickup
+        :parameters (?t - truck ?truckLocation - location ?pickupLocation - location)
+        :precondition (and
+            (at ?t ?pickupLocation) (= (numberOfVaccines ?t) 0) (isHospital ?pickupLocation) (at ?t ?truckLocation)
+        )
+        :effect (and
+            (increase (numberOfVaccines ?t) 5) 
+        )
+    )
+    
 )
