@@ -4,7 +4,7 @@
     ;(:situation <situation_name>) ;deprecated
     (:objects 
         t1 t2 - truck 
-        startLocation location1 location2 location3 location4 location5 - location
+        startLocation location1 location2 location3 location4 location5  - location
         person1 person2 person3 - person
     )
     (:init
@@ -62,6 +62,16 @@
 
             (vaccineOld t1)
             (vaccineYoung t2)
+
+            (isHospital location4)
+            (= (numberOfVaccines t1) 0)
+            (= (numberOfVaccines t2) 0)
+
+            (= (vaccinesRequired person1) 1)
+            (= (vaccinesRequired person2) 1)
+            (= (vaccinesRequired person3) 1)
+
+
     )
 
     (:goal (and

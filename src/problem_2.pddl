@@ -65,7 +65,6 @@
             (atPerson person7 location10)
             (atPerson person8 location9)
 
-
             (not (over60 person1))
             (not (over60 person3))
             (not (over60 person5))
