@@ -1,31 +1,33 @@
 (define
     (problem problem_2)
     (:domain vaccine-delivery)
-
+    ;(:situation <situation_name>) ;deprecated
     (:objects 
-        t - truck 
+        t1 t2 - truck 
         startLocation location0 location1 location2 location3 location4 location5 location6 location7 location8 location9 location10 - location
         person1 person2 person3 person4 person5 person6 person7 person8 - person
     )
     (:init
-            (at t startLocation)
-            (not (vaccinated person1))
-            (not (vaccinated person2))
-            (not (vaccinated person3))
-            (not (vaccinated person4))
-            (not (vaccinated person5))
-            (not (vaccinated person6))
-            (not (vaccinated person7))
-            (not (vaccinated person8))
-
+            (at t1 startLocation)
+            (at t2 startLocation)
+            
             (notVaccinated person1)
             (notVaccinated person2)
             (notVaccinated person3)
-             (notVaccinated person4)
+            (notVaccinated person4)
             (notVaccinated person5)
             (notVaccinated person6)
-             (notVaccinated person7)
+            (notVaccinated person7)
             (notVaccinated person8)
+
+            (not(vaccinated person1))
+            (not(vaccinated person2))
+            (not(vaccinated person3))
+            (not(vaccinated person4))
+            (not(vaccinated person5))
+            (not(vaccinated person6))
+            (not(vaccinated person7))
+            (not(vaccinated person8))
 
             (connected startLocation location0)
             (connected location0 startLocation)
@@ -57,29 +59,47 @@
             (atPerson person1 location1)
             (atPerson person2 location3)
             (atPerson person3 location5)
-            (atPerson person4 location6)
-            (atPerson person5 location6)
+            (atPerson person4 location5)
+            (atPerson person5 location0)
             (atPerson person6 location8)
-            (atPerson person7 location9)
-            (atPerson person8 location10)
+            (atPerson person7 location10)
+            (atPerson person8 location9)
+
 
             (not (over60 person1))
-            (over60 person2)
             (not (over60 person3))
-            (over60 person4)
             (not (over60 person5))
-            (over60 person6)
             (not (over60 person7))
-            (over60 person8)
+            (under60 person1)
+            (under60 person3)
+            (under60 person5)
+            (under60 person7)
 
+
+            (over60 person2)
+            (over60 person4)
+            (over60 person6)
+            (over60 person8)
+            (not (under60 person2))
+            (not (under60 person4))
+            (not (under60 person6))
+            (not (under60 person8))
+
+            (vaccineOld t1)
+            (vaccineYoung t2)
     )
 
     (:goal (and
+        (at t1 startLocation)
+        (at t2 startLocation)
+        (vaccinated person1)
         (vaccinated person2)
+        (vaccinated person3)
         (vaccinated person4)
+        (vaccinated person5)
         (vaccinated person6)
+        (vaccinated person7)
         (vaccinated person8)
-        (at t startLocation)
         )
     )
 )
