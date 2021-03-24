@@ -1,6 +1,6 @@
 (define
     (domain vaccine-delivery)
-    (:requirements :strips :typing) 
+    (:requirements :strips :typing :fluents) 
 
     (:types
         person - object 
@@ -15,9 +15,14 @@
         (notVaccinated ?p - person)
         (vaccinated ?p - person)
         (over60 ?p - person)
-        (vaccineForOld ?t - truck)
-        (vaccineForYoung ?t - truck)
+        (vaccineOld ?t - truck)
+        (vaccineYoung ?t - truck)
         (under60 ?p - person)
+    )
+
+    (:functions
+        (distanceBetween ?startLocation - location ?endLocation - location)
+        (totalDistanceTravelled)
     )
 
     (:action move
@@ -26,14 +31,16 @@
             (at ?t ?startlocation) (connected ?startlocation ?endlocation)
         )
         :effect (and
-            (at ?t ?endlocation) (not (at ?t ?startlocation))
+            (at ?t ?endlocation) 
+            (not (at ?t ?startlocation))
+            (increase (totalDistanceTravelled) (distanceBetween ?startLocation ?endLocation))
         )
     )
 
     (:action vaccinateOld 
         :parameters (?t - truck ?trucklocation - location ?p - person)
         :precondition (and
-            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (over60 ?p) (vaccineForOld ?t)
+            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (over60 ?p) (vaccineOld ?t)
         )
         :effect (and 
             (not (notVaccinated ?p))
@@ -44,7 +51,7 @@
      (:action vaccinateYoung
         :parameters (?t - truck ?trucklocation - location ?p - person)
         :precondition (and
-            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (under60 ?p) (vaccineForYoung ?t)
+            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (under60 ?p) (vaccineYoung ?t)
         )
         :effect (and 
             (not (notVaccinated ?p))
