@@ -1,7 +1,6 @@
 (define
     (problem problem_1)
     (:domain vaccine-delivery)
-    ;(:situation <situation_name>) ;deprecated
     (:objects 
         t1 t2 - truck 
         startLocation location1 location2 location3 location4 location5 - location
@@ -49,6 +48,38 @@
             (connected location3 location5)
             (connected location4 location5)
 
+            (= (distanceBetween startLocation location1) 1)
+            (= (distanceBetween location1 startLocation) 1)
+            (= (distanceBetween startLocation location3) 1)
+            (= (distanceBetween location3 startLocation) 1)
+            (= (distanceBetween startLocation location5) 100)
+            (= (distanceBetween location5 startLocation) 100)
+            (= (distanceBetween location1 location2) 100)
+            (= (distanceBetween location2 location1) 100)
+            (= (distanceBetween location1 location4) 1)
+            (= (distanceBetween location4 location1) 1)
+            (= (distanceBetween location2 location3) 100)
+            (= (distanceBetween location3 location2) 100)
+            (= (distanceBetween location2 location4) 100)
+            (= (distanceBetween location4 location2) 100)
+            (= (distanceBetween location3 location4) 100)
+            (= (distanceBetween location4 location3) 100)
+            (= (distanceBetween location3 location5) 1)
+            (= (distanceBetween location5 location3) 1)
+            (= (distanceBetween location4 location5) 1)
+            (= (distanceBetween location5 location4) 1)
+               
+            (= (distanceBetween location1 location2) 100)
+            (= (distanceBetween location1 location4) 1)
+            (= (distanceBetween location2 location3) 100)
+            (= (distanceBetween location2 location4) 100)
+            (= (distanceBetween location3 location4) 100)
+            (= (distanceBetween location3 location5) 1)
+            (= (distanceBetween location4 location5) 1)
+
+      
+            (= (totalDistanceTravelled) 0)
+
             (atPerson person1 location1)
             (atPerson person2 location3)
             (atPerson person3 location5)
@@ -60,8 +91,8 @@
             (under60 person2)
             (not (under60 person3))
 
-            (vaccineForOld t1)
-            (vaccineForYoung t2)
+            (vaccineOld t1)
+            (vaccineYoung t2)
     )
 
     (:goal (and
@@ -72,4 +103,5 @@
         (vaccinated person2)
         )
     )
+    ; (:metric minimize (totalDistanceTravelled))
 )
