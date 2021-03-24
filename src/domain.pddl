@@ -18,12 +18,11 @@
         (vaccineOld ?t - truck)
         (vaccineYoung ?t - truck)
         (under60 ?p - person)
-        (isHospital ?loc - location)
     )
 
     (:functions
-        (numberOfVaccines ?t - truck)
-        (vaccinesRequired ?p - person)
+        (distanceBetween ?startLocation - location ?endLocation - location)
+        (totalDistanceTravelled)
     )
 
     (:action move
@@ -32,42 +31,31 @@
             (at ?t ?startlocation) (connected ?startlocation ?endlocation)
         )
         :effect (and
-            (at ?t ?endlocation) (not (at ?t ?startlocation))
+            (at ?t ?endlocation) 
+            (not (at ?t ?startlocation))
+            (increase (totalDistanceTravelled) (distanceBetween ?startLocation ?endLocation))
         )
     )
 
     (:action vaccinateOld 
         :parameters (?t - truck ?trucklocation - location ?p - person)
         :precondition (and
-            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (over60 ?p) (vaccineOld ?t) (>= (numberOfVaccines ?t) (vaccinesRequired ?p))
+            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (over60 ?p) (vaccineOld ?t)
         )
         :effect (and 
             (not (notVaccinated ?p))
             (vaccinated ?p)
-            (decrease (numberOfVaccines ?t) (vaccinesRequired ?p))
         )
     )
 
-    (:action vaccinateYoung
+     (:action vaccinateYoung
         :parameters (?t - truck ?trucklocation - location ?p - person)
         :precondition (and
-            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (under60 ?p) (vaccineYoung ?t) (>= (numberOfVaccines ?t) (vaccinesRequired ?p))
+            (atPerson ?p ?trucklocation) (at ?t ?trucklocation) (notVaccinated ?p) (under60 ?p) (vaccineYoung ?t)
         )
         :effect (and 
             (not (notVaccinated ?p))
             (vaccinated ?p)
-            (decrease (numberOfVaccines ?t) (vaccinesRequired ?p))
         )
     )
-
-    (:action pickup
-        :parameters (?t - truck ?truckLocation - location ?pickupLocation - location)
-        :precondition (and
-            (at ?t ?pickupLocation) (= (numberOfVaccines ?t) 0) (isHospital ?pickupLocation) (at ?t ?truckLocation)
-        )
-        :effect (and
-            (increase (numberOfVaccines ?t) 5) 
-        )
-    )
-    
 )
