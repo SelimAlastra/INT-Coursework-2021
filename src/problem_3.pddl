@@ -25,6 +25,13 @@
     (connected loc4 loc5)
     (connected loc4 loc3)
     (connected loc3 loc4)
+
+    (= (distanceBetween startLocation loc5) 1)
+    (= (distanceBetween loc5 startLocation) 1)
+    (= (distanceBetween loc4 loc5) 1)
+    (= (distanceBetween loc5 loc4) 1)
+    (= (distanceBetween loc4 loc3) 1)
+    (= (distanceBetween loc3 loc4) 1)
     
 
     (= (distanceBetween startLocation loc1) 100)
@@ -34,13 +41,6 @@
     (= (distanceBetween loc2 loc3) 100)
     (= (distanceBetween loc3 loc2) 100)
 
-
-    (= (distanceBetween startLocation loc5) 1)
-    (= (distanceBetween loc5 startLocation) 1)
-    (= (distanceBetween loc4 loc5) 1)
-    (= (distanceBetween loc5 loc4) 1)
-    (= (distanceBetween loc4 loc3) 1)
-    (= (distanceBetween loc3 loc4) 1)
 
     (not (under60 p1))
     (over60 p1)
