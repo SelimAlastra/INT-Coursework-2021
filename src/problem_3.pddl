@@ -1,7 +1,7 @@
 (define (problem problem3) (:domain vaccine-delivery)
 (:objects 
     t1 - truck
-    startLocation loc1 loc2 loc3 loc4 loc5 loc6 - location
+    startLocation loc1 loc2 loc3 loc4 loc5 - location
     p1 - person
 )
 (:init
@@ -19,10 +19,8 @@
     (connected loc5 startLocation)
     (connected loc1 loc2)
     (connected loc2 loc1)
-    (connected loc2 loc6)
-    (connected loc6 loc2)
-    (connected loc6 loc3)
-    (connected loc3 loc6)
+    (connected loc2 loc3)
+    (connected loc3 loc2)
     (connected loc5 loc4)
     (connected loc4 loc5)
     (connected loc4 loc3)
@@ -33,10 +31,8 @@
     (= (distanceBetween loc1 startLocation) 100)
     (= (distanceBetween loc1 loc2) 100)
     (= (distanceBetween loc2 loc1) 100)
-    (= (distanceBetween loc2 loc6) 100)
-    (= (distanceBetween loc6 loc2) 100)
-    (= (distanceBetween loc3 loc6) 100)
-    (= (distanceBetween loc6 loc3) 100)
+    (= (distanceBetween loc2 loc3) 100)
+    (= (distanceBetween loc3 loc2) 100)
 
 
     (= (distanceBetween startLocation loc5) 1)
