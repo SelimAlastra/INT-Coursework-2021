@@ -1,5 +1,5 @@
-; Hospital rooms problem file
 (define (problem problem6) (:domain vaccine-delivery)
+; Hospital rooms problem file
 (:objects 
     n1 n2 - nurse
     startLocation hall room1 room2 room3 room4 room5 room6 pickUpLocation  - location

@@ -1,5 +1,5 @@
-; City problem file 
 (define (problem problem7) (:domain vaccine-delivery)
+; City problem file 
 (:objects 
     n1 n2 - nurse
     startLocation st1 st2 st3 st4 st5 st6 highway  pickUpLocation  - location
