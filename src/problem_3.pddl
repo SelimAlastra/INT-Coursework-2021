@@ -14,7 +14,7 @@
 
     (not (carryingVaccine n1))
     (notCarryingVaccine n1)
-    (isHospital loc4)
+    (isPickUpLocation loc4)
 
     (at n1 startLocation)
     (atPerson p1 loc3)

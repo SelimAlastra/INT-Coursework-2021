@@ -18,7 +18,7 @@
         (vaccineOld ?n - nurse)
         (vaccineYoung ?n - nurse)
         (under60 ?p - person)
-        (isHospital ?loc - location)
+        (isPickUpLocation ?loc - location)
         (carryingVaccine ?n - nurse)
         (notCarryingVaccine ?n - nurse)
     )
@@ -69,12 +69,11 @@
     (:action pickup
         :parameters (?n - nurse ?nurseLocation - location)
         :precondition (and
-            (isHospital ?nurseLocation) (at ?n ?nurseLocation) (notCarryingVaccine ?n)
+            (isPickUpLocation ?nurseLocation) (at ?n ?nurseLocation) (notCarryingVaccine ?n)
         )
         :effect (and
             (not (notCarryingVaccine ?n))
             (carryingVaccine ?n)
         )
     )
-    
 )
