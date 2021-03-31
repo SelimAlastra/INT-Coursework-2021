@@ -1,16 +1,20 @@
 (define (problem problem3) (:domain vaccine-delivery)
 (:objects 
-    t1 - truck
+    n1 - nurse
     startLocation loc1 loc2 loc3 loc4 loc5 - location
     p1 - person
 )
 (:init
-    (vaccineOld t1)
+    (vaccineOld n1)
 
     (notVaccinated p1)
     (not (vaccinated p1))
-    
-    (at t1 startLocation)
+
+    (not (carryingVaccine n1))
+    (notCarryingVaccine n1)
+    (isHospital loc4)
+
+    (at n1 startLocation)
     (atPerson p1 loc3)
     (over60 p1)
     (connected startLocation loc1)
@@ -49,7 +53,7 @@
 )
 
 (:goal (and
-    (at t1 startLocation)
+    (at n1 startLocation)
     (vaccinated p1)
 ))
 
