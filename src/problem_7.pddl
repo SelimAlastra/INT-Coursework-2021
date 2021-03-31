@@ -1,4 +1,4 @@
-; City problem file
+; City problem file 
 (define (problem problem7) (:domain vaccine-delivery)
 (:objects 
     n1 n2 - nurse
