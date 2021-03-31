@@ -2,13 +2,15 @@
 (:objects 
     n1 - nurse
     startLocation loc1 loc2 loc3 loc4 loc5 - location
-    p1 - person
+    p1 p2 - person
 )
 (:init
     (vaccineOld n1)
 
     (notVaccinated p1)
     (not (vaccinated p1))
+    (notVaccinated p2)
+    (not (vaccinated p2))
 
     (not (carryingVaccine n1))
     (notCarryingVaccine n1)
@@ -16,7 +18,8 @@
 
     (at n1 startLocation)
     (atPerson p1 loc3)
-    (over60 p1)
+    (atPerson p2 loc5)
+
     (connected startLocation loc1)
     (connected loc1 startLocation)
     (connected startLocation loc5)
@@ -48,6 +51,8 @@
 
     (not (under60 p1))
     (over60 p1)
+    (not (under60 p2))
+    (over60 p2)
 
     (= (totalDistanceTravelled) 0)
 )
@@ -55,6 +60,7 @@
 (:goal (and
     (at n1 startLocation)
     (vaccinated p1)
+    (vaccinated p2)
 ))
 
 (:metric minimize (totalDistanceTravelled))

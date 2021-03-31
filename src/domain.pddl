@@ -48,6 +48,8 @@
         :effect (and 
             (not (notVaccinated ?p))
             (vaccinated ?p)
+            (notCarryingVaccine ?n)
+            (not (carryingVaccine ?n))
         )
     )
 
@@ -59,6 +61,8 @@
         :effect (and 
             (not (notVaccinated ?p))
             (vaccinated ?p)
+            (notCarryingVaccine ?n)
+            (not (carryingVaccine ?n))
         )
     )
 
