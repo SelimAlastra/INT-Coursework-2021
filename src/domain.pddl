@@ -36,7 +36,7 @@
         :effect (and
             (at ?n ?endlocation) 
             (not (at ?n ?startlocation))
-            (increase (totalDistanceTravelled) (distanceBetween ?startLocation ?endLocation))
+            ; (increase (totalDistanceTravelled) (distanceBetween ?startLocation ?endLocation))
         )
     )
 

@@ -4,73 +4,49 @@
     (:domain vaccine-delivery)
     ;(:situation <situation_name>) ;deprecated
     (:objects 
-        t1 t2 - truck 
-        startLocation location1 location2 location3 location4 location5 - location
-        person1 person2 person3 - person
+        startLocation loc1 loc2 loc3 loc4 loc5 loc6 loc7 pickupLocation - location
+        n1 n2 - nurse
+        p1 p2 p3 p4 - person
     )
     (:init
-            (at t1 startLocation)
-            (at t2 startLocation)
-            
-            (notVaccinated person1)
-            (notVaccinated person2)
-            (notVaccinated person3)
-            (not(vaccinated person1))
-            (not(vaccinated person2))
-            (not(vaccinated person3))
+        (vaccineOld n1)
+        (vaccineYoung n2)
 
-            (connected startLocation location1)
-            (connected startLocation location3)
-            (connected startLocation location5)
+        (under60 p1) (not (under60 p1))
+        (under60 p2) (not (under60 p2))
+        (over60 p3) (not (under60 p3))
+        (over60 p4) (not (under60 p4))
 
-            (connected location1 startLocation)
-            (connected location1 location2)
-            (connected location1 location4)
+        (notVaccinated p1) (not (vaccinated p1))
+        (notVaccinated p2) (not (vaccinated p2))
+        (notVaccinated p3) (not (vaccinated p3))
+        (notVaccinated p4) (not (vaccinated p4))
+        
+        (atPerson p1 loc5) (atPerson p2 loc3)
+        (atPerson p3 loc6) (atPerson p4 loc7)
+        (at n1 startLocation) (at n2 startLocation)
 
-            (connected location2 location1)
-            (connected location2 location3)
-            (connected location2 location4)
-            (connected location3 startLocation)
-            (connected location3 location2)
-            (connected location3 location4)
-            (connected location3 location5)
-            (connected location4 location1)
-            (connected location4 location2)
-            (connected location4 location3)
-            (connected location4 location5)
-            (connected location5 startLocation)
-            (connected location5 location3)
-            (connected location5 location4)
+        (isPickUpLocation pickupLocation)
+        (carryingVaccine n1) (not (notCarryingVaccine n1))
+        (carryingVaccine n2) (not (notCarryingVaccine n2))
 
-            (connected location1 location2)
-            (connected location1 location4)
-            (connected location2 location3)
-            (connected location2 location4)
-            (connected location3 location4)
-            (connected location3 location5)
-            (connected location4 location5)
-
-            (atPerson person1 location1)
-            (atPerson person2 location3)
-            (atPerson person3 location5)
-
-            (not (over60 person1))
-            (not (over60 person2))
-            (over60 person3)
-            (under60 person1)
-            (under60 person2)
-            (not (under60 person3))
-
-            (vaccineOld t1)
-            (vaccineYoung t2)
+        (connected startlocation loc1) (connected loc1 startLocation)
+        (connected loc1 loc7) (connected loc7 loc1)
+        (connected loc1 loc6) (connected loc6 loc1)
+        (connected loc4 loc6) (connected loc6 loc4)
+        (connected loc4 loc5) (connected loc5 loc4)
+        (connected loc2 loc4) (connected loc4 loc2)
+        (connected loc2 loc3) (connected loc3 loc2)
+        (connected loc3 pickupLocation) (connected pickupLocation loc3)
     )
 
     (:goal (and
-        (at t1 startLocation)
-        (at t2 startLocation)
-        (vaccinated person3)
-        (vaccinated person1)
-        (vaccinated person2) 
+        (vaccinated p1)
+        (vaccinated p2)
+        (vaccinated p3)
+        (vaccinated p4)
+        (at n1 startLocation)
+        (at n2 startLocation)
         )
     )
 )
