@@ -23,11 +23,6 @@
         (notCarryingVaccine ?n - nurse)
     )
 
-    (:functions
-        (distanceBetween ?startLocation - location ?endLocation - location)
-        (totalDistanceTravelled)
-    )
-
     (:action move
         :parameters (?n - nurse ?startlocation - location ?endlocation - location)
         :precondition (and

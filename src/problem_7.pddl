@@ -54,40 +54,12 @@
     (connected st6 highway)
     (connected highway st6)
 
-    (= (distanceBetween startLocation pickUpLocation) 1)
-    (= (distanceBetween pickUpLocation st1) 1)
-    (= (distanceBetween st1 st2) 1)
-    (= (distanceBetween st2 st3) 1)
-    (= (distanceBetween st3 st4) 1)
-    (= (distanceBetween st4 st5) 1)
-    (= (distanceBetween st5 st6) 1)
-    (= (distanceBetween st6 highway) 1)
-    (= (distanceBetween pickUpLocation highway) 1)
-    (= (distanceBetween st3 highway) 1)
-
-    (= (distanceBetween pickUpLocation startLocation) 1)
-    (= (distanceBetween st1 pickUpLocation) 1)
-    (= (distanceBetween st2 st1) 1)
-    (= (distanceBetween st3 st2) 1)
-    (= (distanceBetween st4 st3) 1)
-    (= (distanceBetween st5 st4) 1)
-    (= (distanceBetween st6 st5) 1)
-    (= (distanceBetween highway st6) 1)
-    (= (distanceBetween highway pickUpLocation) 1)
-    (= (distanceBetween highway st3) 1)
-    
-
-
     (not (under60 p1))
     (over60 p1)
     (not (under60 p2))
     (over60 p2)
     (not (over60 p3))
     (under60 p3)
-
-
-    (= (totalDistanceTravelled) 0)
-
 )
 
 (:goal (and
@@ -96,6 +68,4 @@
     (vaccinated p1)
     (vaccinated p2)
     (vaccinated p3)
-))
-(:metric minimize (totalDistanceTravelled))
-)
+)))
