@@ -2,7 +2,6 @@
 (define
     (problem problem_1)
     (:domain vaccine-delivery)
-    ;(:situation <situation_name>) ;deprecated
     (:objects 
         startLocation loc1 loc2 loc3 loc4 loc5 loc6 loc7 pickupLocation - location
         n1 n2 - nurse
