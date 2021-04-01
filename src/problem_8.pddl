@@ -57,20 +57,6 @@
     (connected pickUpLocation retirHome1)
     (connected retirHome3 pickUpLocation)
     (connected pickUpLocation retirHome3)
-    
-    
-    (= (distanceBetween startLocation retirHome1) 1)
-    (= (distanceBetween retirHome1 startLocation) 1)
-    (= (distanceBetween startLocation retirHome2) 1)
-    (= (distanceBetween retirHome2 startLocation) 1)
-    (= (distanceBetween retirHome2 retirHome3) 2)
-    (= (distanceBetween retirHome3 retirHome2) 2)
-    (= (distanceBetween retirHome1 pickUpLocation) 3)
-    (= (distanceBetween pickUpLocation retirHome1) 3)
-    (= (distanceBetween retirHome3 pickUpLocation) 3)
-    (= (distanceBetween pickUpLocation retirHome3) 3)
-    
-
 
     (not (under60 p1))
     (over60 p1)
@@ -86,9 +72,6 @@
     (over60 p6)
     (not (under60 p7))
     (over60 p7)
-
-    (= (totalDistanceTravelled) 0)
-
 )
 
 (:goal (and
@@ -101,6 +84,4 @@
     (vaccinated p5)
     (vaccinated p6)
     (vaccinated p7)
-))
-(:metric minimize (totalDistanceTravelled))
-)
+)))
