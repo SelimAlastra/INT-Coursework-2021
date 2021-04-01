@@ -28,8 +28,6 @@
     (notVaccinated primeMinistSp)
     (not (vaccinated primeMinistSp))
     
-    
-
     (not (carryingVaccine n1))
     (notCarryingVaccine n1)
 
@@ -92,7 +90,7 @@
     (under60 primeMinistSp)
     (not (over60 primeMinistSp))
 
-    (= (totalDistanceTravelled) 0)
+    ; (= (totalDistanceTravelled) 0)
 
 )
 
@@ -109,5 +107,5 @@
     (vaccinated kingSp)
     (vaccinated primeMinistSp)
 ))
-(:metric minimize (totalDistanceTravelled))
+; (:metric minimize (totalDistanceTravelled))
 )

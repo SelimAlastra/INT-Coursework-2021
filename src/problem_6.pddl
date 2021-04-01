@@ -55,26 +55,6 @@
     (connected hall room6)
     (connected room6 hall)
 
-    (= (distanceBetween pickUpLocation startLocation) 1)
-    (= (distanceBetween startLocation hall) 1)
-    (= (distanceBetween hall room1) 1)
-    (= (distanceBetween hall room2) 1)
-    (= (distanceBetween hall room3) 1)
-    (= (distanceBetween hall room4) 1)
-    (= (distanceBetween hall room5) 1)
-    (= (distanceBetween hall room6) 1)
-
-    (= (distanceBetween startLocation pickUpLocation) 2)
-    (= (distanceBetween hall startLocation) 2)
-    (= (distanceBetween room1 hall) 2)
-    (= (distanceBetween room2 hall) 2)
-    (= (distanceBetween room3 hall) 2)
-    (= (distanceBetween room4 hall) 2)
-    (= (distanceBetween room5 hall) 2)
-    (= (distanceBetween room6 hall) 2)
-    
-
-
     (not (under60 p1))
     (over60 p1)
     (not (under60 p2))
@@ -85,9 +65,6 @@
     (under60 p4)
     (not (over60 p5))
     (under60 p5)
-
-    (= (totalDistanceTravelled) 0)
-
 )
 
 (:goal (and
@@ -98,6 +75,4 @@
     (vaccinated p3)
     (vaccinated p4)
     (vaccinated p5)
-))
-(:metric minimize (totalDistanceTravelled))
-)
+)))

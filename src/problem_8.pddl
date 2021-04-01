@@ -25,12 +25,8 @@
     (not (notVaccinated p5))
     (vaccinated p5)
 
-    
-    
-
     (not (carryingVaccine n1))
     (notCarryingVaccine n1)
-
     (not (carryingVaccine n2))
     (notCarryingVaccine n2)
 
