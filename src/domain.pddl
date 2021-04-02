@@ -1,10 +1,9 @@
-(define
-    (domain vaccine-delivery)
-    (:requirements :strips :typing :fluents) 
+(define (domain vaccine-delivery)
+    (:requirements :strips :typing)
 
     (:types
-        person - object 
-        nurse - object 
+        person - object
+        nurse - object
         location - object
     )
 
@@ -29,17 +28,17 @@
             (at ?n ?startlocation) (connected ?startlocation ?endlocation)
         )
         :effect (and
-            (at ?n ?endlocation) 
+            (at ?n ?endlocation)
             (not (at ?n ?startlocation))
         )
     )
 
-    (:action vaccinateOld 
+    (:action vaccinateOld
         :parameters (?n - nurse ?nurseLocation - location ?p - person)
         :precondition (and
             (atPerson ?p ?nurseLocation) (at ?n ?nurseLocation) (notVaccinated ?p) (over60 ?p) (vaccineOld ?n) (carryingVaccine ?n)
         )
-        :effect (and 
+        :effect (and
             (not (notVaccinated ?p))
             (vaccinated ?p)
             (notCarryingVaccine ?n)
@@ -47,12 +46,12 @@
         )
     )
 
-     (:action vaccinateYoung
+    (:action vaccinateYoung
         :parameters (?n - nurse ?nurseLocation - location ?p - person)
         :precondition (and
             (atPerson ?p ?nurseLocation) (at ?n ?nurseLocation) (notVaccinated ?p) (under60 ?p) (vaccineYoung ?n) (carryingVaccine ?n)
         )
-        :effect (and 
+        :effect (and
             (not (notVaccinated ?p))
             (vaccinated ?p)
             (notCarryingVaccine ?n)
