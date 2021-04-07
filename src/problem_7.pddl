@@ -4,7 +4,7 @@
     (:objects
         n1 n2 - nurse
         startLocation st1 st2 st3 st4 st5 st6 highway pickUpLocation - location
-        p1 p2 p3 - person
+        p1 p2 p3 p4 - person
     )
     (:init
         (vaccineOld n1)
@@ -16,6 +16,10 @@
         (not (vaccinated p2))
         (notVaccinated p3)
         (not (vaccinated p3))
+        (vaccinated p4)
+        (not(notVaccinated p4))
+
+
 
         (not (carryingVaccine n1))
         (notCarryingVaccine n1)
@@ -29,8 +33,9 @@
         (at n2 startLocation)
 
         (atPerson p1 st4)
-        (atPerson p2 st5)
+        (atPerson p2 st4)
         (atPerson p3 st5)
+        (atPerson p4 st2)
 
         (connected startLocation pickUpLocation)
         (connected pickUpLocation startLocation)
@@ -59,6 +64,8 @@
         (over60 p2)
         (not (over60 p3))
         (under60 p3)
+        (not (over60 p4))
+        (under60 p4)
     )
 
     (:goal
@@ -68,6 +75,7 @@
             (vaccinated p1)
             (vaccinated p2)
             (vaccinated p3)
+            (vaccinated p4)
         )
     )
 )
